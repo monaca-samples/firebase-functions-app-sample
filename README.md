@@ -49,3 +49,6 @@ public/index.html
 ```
     // connectFunctionsEmulator(window.functions, 'localhost', 5001);
 ```
+
+エミュレータはhttpスキームでマウントされているため、アプリがhttpで接続出来るか、Mixed Contentがブロックされて
+いないかなどに注意して下さい。

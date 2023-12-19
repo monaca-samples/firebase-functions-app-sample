@@ -2,10 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 
 // Firebaseにアクセス（本番用）
-// import { getFunctions, httpsCallable  } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-functions.js";
-
-// Firebaseにアクセス（エミュレータ利用）
-import { getFunctions, httpsCallable, connectFunctionsEmulator  } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-functions.js";
+import { getFunctions, httpsCallable  } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-functions.js";
 
 const firebaseConfig = {
   "apiKey":"%%API_KEY%%",
@@ -18,8 +15,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const functions = getFunctions(app);
-// エミュレータにアクセス
-connectFunctionsEmulator(functions, 'localhost', 5001);
 
 function log(message)  {
     const text = (typeof message === "string" || message instanceof String)  ? message : JSON.stringify(message);
