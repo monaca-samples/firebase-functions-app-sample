@@ -42,6 +42,10 @@ MonacaのIDE上でも、ローカルのエミュレータに接続すること�
 回避する必要があります。Androidであれば、config.xmlに
 
 ```
+<edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+  <application android:usesCleartextTraffic="true" />
+</edit-config>
 <preference name="scheme" value="http"/> 
 ```
+が必要になります。
 
