@@ -1,7 +1,7 @@
 // Firebaseの設定
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 
-// Firebaseにアクセス（本番用）
+// Firebaseにアクセス
 import { getFunctions, httpsCallable  } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-functions.js";
 
 const firebaseConfig = {

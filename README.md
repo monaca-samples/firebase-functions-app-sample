@@ -21,34 +21,27 @@ public/index.html
 
 # エミュレータ
 
-デフォルトではローカルのエミュレータに接続するようになっています。
+エミュレータに接続して試したい場合、import文を以下のように修正します。
+
+```
+    // Firebaseにアクセス（エミュレータ利用）
+    import { getFunctions, httpsCallable, connectFunctionsEmulator  } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-functions.js";
+```
+
+また、`app`と`functions`の定義後に、次のコードを挿入して下さい。
 接続先であるエミュレータのIPアドレス, ポートを適切なものに修正して下さい。
 
 ```
-    connectFunctionsEmulator(window.functions, 'localhost', 5001);
+    connectFunctionsEmulator(functions, 'localhost', 5001);
 ```
 
-なお、MonacaのIDE上でも、ローカルのエミュレータに接続することが出来ます。
+MonacaのIDE上でも、ローカルのエミュレータに接続することが出来ます。
 アプリをビルドして動作検証する場合、接続先は`localhost`ではなくなりますのでご注意ください。
 
-
-# 本番接続
-
-本番のFirebaseに接続するためには、以下のように、import文を本番用のものに変更して下さい
+なお、エミュレータに接続するためには、httpでの接続が可能で、かつ、Mixed Content Errorを
+回避する必要があります。Androidであれば、config.xmlに
 
 ```
-    // Firebaseにアクセス (本番用)
-    import { getFunctions, httpsCallable  } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-functions.js";
-
-    // Firebaseにアクセス（エミュレータ利用）
-    // import { getFunctions, httpsCallable, connectFunctionsEmulator  } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-functions.js";
+<preference name="scheme" value="http"/> 
 ```
 
-また、次のエミュレータへの接続先を指定している次の文を次のようにコメントアウトして下さい。
-
-```
-    // connectFunctionsEmulator(window.functions, 'localhost', 5001);
-```
-
-エミュレータはhttpスキームでマウントされているため、アプリがhttpで接続出来るか、Mixed Contentがブロックされて
-いないかなどに注意して下さい。
